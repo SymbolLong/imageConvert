@@ -2,17 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="eb38c121-ee90-41a4-b7da-b592037a5af0" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/MiddleSchool.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/Permissions.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/Schools.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/Temp.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/baidu/Recognize.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/util/CopyFile.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/util/HttpUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/zhang/file/util/StringUtil.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/region" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/target/" />
@@ -28,8 +19,8 @@
       <file leaf-file-name=".gitignore" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/.gitignore">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="76">
-              <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+            <state relative-caret-position="131">
+              <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
             </state>
           </provider>
         </entry>
@@ -68,6 +59,7 @@
         <option value="$PROJECT_DIR$/pom.xml" />
         <option value="$PROJECT_DIR$/src/main/java/com/zhang/file/baidu/Recognize.java" />
         <option value="$PROJECT_DIR$/src/main/java/com/zhang/file/Temp.java" />
+        <option value="$PROJECT_DIR$/.gitignore" />
       </list>
     </option>
   </component>
@@ -282,15 +274,16 @@
       <workItem from="1529916933622" duration="1651000" />
       <workItem from="1530153740955" duration="362000" />
       <workItem from="1531100584161" duration="332000" />
-      <workItem from="1538888273770" duration="241000" />
+      <workItem from="1538888273770" duration="410000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="38963000" />
+    <option name="totallyTimeSpent" value="39132000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1440" height="900" extended-state="0" />
+    <editor active="true" />
     <layout>
       <window_info anchor="right" id="Key Promoter X" order="10" />
       <window_info anchor="right" id="Palette" order="3" />
@@ -688,8 +681,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="76">
-          <caret line="4" lean-forward="true" selection-start-line="4" selection-end-line="4" />
+        <state relative-caret-position="131">
+          <caret line="26" column="6" selection-start-line="26" selection-start-column="6" selection-end-line="26" selection-end-column="6" />
         </state>
       </provider>
     </entry>
