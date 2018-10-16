@@ -58,6 +58,15 @@
             <version>4.4.0</version>
         </dependency>
 
+        <!-- https://mvnrepository.com/artifact/org.swinglabs/pdf-renderer -->
+        <dependency>
+            <groupId>org.swinglabs</groupId>
+            <artifactId>pdf-renderer</artifactId>
+            <version>1.0.5</version>
+        </dependency>
+
+
+
 
     </dependencies>
 
