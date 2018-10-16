@@ -58,13 +58,12 @@
             <version>4.4.0</version>
         </dependency>
 
-        <!-- https://mvnrepository.com/artifact/org.swinglabs/pdf-renderer -->
+        <!-- https://mvnrepository.com/artifact/org.icepdf.os/icepdf-core -->
         <dependency>
-            <groupId>org.swinglabs</groupId>
-            <artifactId>pdf-renderer</artifactId>
-            <version>1.0.5</version>
+            <groupId>org.icepdf.os</groupId>
+            <artifactId>icepdf-core</artifactId>
+            <version>6.2.0</version>
         </dependency>
-
 
 
 

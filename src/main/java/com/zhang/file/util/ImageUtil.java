@@ -1,17 +1,15 @@
 package com.zhang.file.util;
 
-import com.sun.pdfview.PDFFile;
-import com.sun.pdfview.PDFPage;
-import com.sun.pdfview.PDFRenderer;
+import org.icepdf.core.pobjects.Document;
+import org.icepdf.core.util.GraphicsRenderingHints;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
 import java.awt.image.BufferedImage;
+import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
-import java.io.RandomAccessFile;
-import java.nio.ByteBuffer;
-import java.nio.channels.FileChannel;
+
 
 /**
  * 图片处理类
@@ -38,10 +36,7 @@ public class ImageUtil {
 // --------pdf to png--------
         String src = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/卡尔卡西古典吉他教程.pdf";
         String target = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/";
-        for (int i = 1; i < 178; i++) {
-            pdf2png(src, target + i + ".png", i);
-        }
-
+        pdf2png(src, target, 0);
     }
 
     private static void toJPG(String src, String target) {
@@ -61,49 +56,45 @@ public class ImageUtil {
         }
     }
 
-    private static void pdf2png(String src, String target, int pageNumber) {
-        File file = new File(src);
-        PDFFile pdffile = null;
-        // set up the PDF reading
+    private static void pdf2png(String src, String target, int page) {
         try {
-            RandomAccessFile raf = new RandomAccessFile(file, "r");
-            FileChannel channel = raf.getChannel();
-            ByteBuffer buf = channel.map(FileChannel.MapMode.READ_ONLY, 0,
-                    channel.size());
-            pdffile = new PDFFile(buf);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+            Document document = new Document();
+            document.setFile(src);
+            //缩放比例
+            float scale = 2.5f;
+            //旋转角度
+            float rotation = 0f;
 
-        if (pageNumber > pdffile.getNumPages()) {
-            return;
-        }
-
-        // print 出该 pdf 文档的页数
-        System.out.println(pdffile.getNumPages());
-
-        // 设置将第 pagen 页生成 png 图片
-        PDFPage page = pdffile.getPage(pageNumber);
-
-        // create and configure a graphics object
-        int width = (int) page.getBBox().getWidth();
-        int height = (int) page.getBBox().getHeight();
-        BufferedImage img = new BufferedImage(width, height, BufferedImage.TYPE_INT_ARGB);
-        Graphics2D g2 = img.createGraphics();
-        //g2.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
-
-        // do the actual drawing
-        PDFRenderer renderer = new PDFRenderer(page, g2, new Rectangle(0, 0, width, height), null, Color.WHITE);
-        try {
-            page.waitForFinish();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-        renderer.run();
-        g2.dispose();
-
-        try {
-            ImageIO.write(img, "png", new File(target));
+            if (page > 0) {
+                BufferedImage image = (BufferedImage)
+                        document.getPageImage(page, GraphicsRenderingHints.SCREEN, org.icepdf.core.pobjects.Page.BOUNDARY_CROPBOX, rotation, scale);
+                RenderedImage rendImage = image;
+                try {
+                    String imgName = page + ".png";
+                    System.out.println(imgName);
+                    File file = new File(target + imgName);
+                    ImageIO.write(rendImage, "png", file);
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                image.flush();
+            } else {
+                for (int i = 0; i < document.getNumberOfPages(); i++) {
+                    BufferedImage image = (BufferedImage)
+                            document.getPageImage(i, GraphicsRenderingHints.SCREEN, org.icepdf.core.pobjects.Page.BOUNDARY_CROPBOX, rotation, scale);
+                    RenderedImage rendImage = image;
+                    try {
+                        String imgName = i + ".png";
+                        System.out.println(imgName);
+                        File file = new File(target + imgName);
+                        ImageIO.write(rendImage, "png", file);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    image.flush();
+                }
+            }
+            document.dispose();
         } catch (Exception e) {
             e.printStackTrace();
         }
