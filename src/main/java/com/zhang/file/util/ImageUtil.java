@@ -10,6 +10,11 @@ import java.awt.image.RenderedImage;
 import java.io.File;
 import java.io.IOException;
 
+import org.apache.pdfbox.pdmodel.PDDocument;
+import org.apache.pdfbox.pdmodel.encryption.InvalidPasswordException;
+import org.apache.pdfbox.text.PDFTextStripper;
+import org.apache.pdfbox.text.PDFTextStripperByArea;
+
 
 /**
  * 图片处理类
@@ -34,9 +39,11 @@ public class ImageUtil {
 //            e.printStackTrace();
 //        }
 // --------pdf to png--------
-        String src = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/卡尔卡西古典吉他教程.pdf";
-        String target = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/";
-        pdf2png(src, target, 0);
+//        String src = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/卡尔卡西古典吉他教程.pdf";
+//        String target = "/Users/zhangsl/Downloads/卡尔卡西古典吉他教程/";
+//        pdf2png(src, target, 0);
+
+        pdf2text("/Users/zhangsl/Downloads/1.pdf");
     }
 
     private static void toJPG(String src, String target) {
@@ -98,6 +105,32 @@ public class ImageUtil {
         } catch (Exception e) {
             e.printStackTrace();
         }
+    }
+
+    public static void pdf2text(String src){
+
+        try {
+            PDDocument document = PDDocument.load(new File(src));
+            document.getClass();
+
+            if(!document.isEncrypted()) {
+                PDFTextStripperByArea stripper = new PDFTextStripperByArea();
+                stripper.setSortByPosition(true);
+                PDFTextStripper tStripper = new PDFTextStripper();
+
+                String pdfFileInText = tStripper.getText(document);
+
+                String[] lines = pdfFileInText.split("\\r?\\n");
+                for(String line : lines) {
+                    System.out.println(line);
+                }
+            }
+        } catch (InvalidPasswordException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 
 
